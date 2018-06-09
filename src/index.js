@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import '../theme/main.scss'
+import App from './components/NavigationBar'
 
 ReactDOM.render(
-    <h1 className="test">Hello React</h1>,
+    <App />,
     document.querySelector('.app-container')
 )
