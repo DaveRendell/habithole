@@ -8,10 +8,13 @@ class Button extends Component {
             default: return ''
         }
     }
+
     render() {
         return (
             <button 
                 className={`auth-button btn btn-outline${this.getButtonStyleClass()}`}
+                onClick={this.props.action}
+                type='button'
             >
                 {this.props.text}
             </button>
