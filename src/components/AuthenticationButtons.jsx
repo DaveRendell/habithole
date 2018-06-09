@@ -4,6 +4,8 @@ import Modal from 'react-modal'
 import Button from './Button'
 import AuthenticationForm from './AuthenticationForm';
 
+import { auth } from '../firebase'
+
 const SIGN_IN = 'sign_in'
 const SIGN_UP = 'sign_up'
 
@@ -45,13 +47,13 @@ class AuthenticationButtons extends Component {
     }
 
     signUpAction(email, password) {
-        console.log(`sign up with email ${email} and password ${password}`)
-        this.closeModal()
+        auth.createUserWithEmailAndPassword(email, password)
+            .then(this.closeModal)
     }
 
     signInAction(email, password) {
-        console.log(`sign in with email ${email} and password ${password}`)
-        this.closeModal()
+        auth.signInWithEmailAndPassword(email, password)
+            .then(this.closeModal)
     }
 
     closeModal() {

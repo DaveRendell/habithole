@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import AuthenticationButtons from './AuthenticationButtons'
+import UserInfo from './UserInfo'
 
 import '../../theme/navigation_bar.scss'
 
@@ -9,7 +9,7 @@ class NavigationBar extends Component {
         return (
             <nav className="navigation-bar navbar navbar-light bg-light justify-content-between">
                 <a className="navbar-brand">Habit Tracker</a>
-                <AuthenticationButtons />
+                <UserInfo />
             </nav>
         )
     }

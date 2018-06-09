@@ -15,6 +15,7 @@ class Button extends Component {
                 className={`auth-button btn btn-outline${this.getButtonStyleClass()}`}
                 onClick={this.props.action}
                 type='button'
+                disabled={this.props.disabled}
             >
                 {this.props.text}
             </button>

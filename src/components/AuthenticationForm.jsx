@@ -7,7 +7,8 @@ class AuthenticationForm extends Component {
 
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            loading: false
         }
 
         this.submitForm = this.submitForm.bind(this)
@@ -15,6 +16,7 @@ class AuthenticationForm extends Component {
 
     submitForm(event) {
         event.preventDefault()
+        this.setState({loading: true})
         this.props.action(this.state.email, this.state.password)
     }
 
@@ -53,7 +55,7 @@ class AuthenticationForm extends Component {
                     type: 'password'
                 })}
                 <Button text='Cancel' action={this.props.cancel} />
-                <Button style='primary' text={this.props.text} action={this.submitForm} />
+                <Button style='primary' text={this.props.text} action={this.submitForm} disabled={this.state.loading} />
             </form>
         )
     }
