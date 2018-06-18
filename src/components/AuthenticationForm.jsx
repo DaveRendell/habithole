@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import Button from './Button';
 
 class AuthenticationForm extends Component {

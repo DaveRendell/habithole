@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Modal from 'react-modal'
 
 import Button from './Button'
+import StartHabitForm from './StartHabitForm';
 
 class StartHabitButton extends Component {
     constructor(props) {
@@ -31,8 +32,7 @@ class StartHabitButton extends Component {
                     isOpen={this.state.isOpen}
                     contentLabel="Start Habit"
                 >
-                    <span>Hello there!</span>
-                    <Button text="Cancel" action={this.closeModal} />
+                    <StartHabitForm cancel={this.closeModal}/>
                 </Modal>
             </div>
         )
