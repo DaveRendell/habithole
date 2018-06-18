@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 import UserInfo from './UserInfo'
 
@@ -8,7 +9,8 @@ class NavigationBar extends Component {
     render() {
         return (
             <nav className="navigation-bar navbar navbar-light bg-light justify-content-between">
-                <a className="navbar-brand">Habit Tracker</a>
+                <Link to="/" className="navbar-brand">Habit Tracker</Link>
+                <Link to="/habits" className="nav-link left">Habits</Link>
                 <UserInfo />
             </nav>
         )
