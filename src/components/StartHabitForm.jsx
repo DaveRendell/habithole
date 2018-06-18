@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { auth, database } from '../firebase'
+
 import Button from './Button';
 
 class StartHabitForm extends Component {
@@ -9,16 +11,33 @@ class StartHabitForm extends Component {
             description: '',
             frequency: 'DAILY',
             colour: 'RED',
-            loading: false
+            loading: false,
+            databaseRef: null
         }
 
         this.submitForm = this.submitForm.bind(this)
     }
 
+    componentDidMount() {
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                this.setState({
+                    databaseRef: database.ref(`habits/${user.uid}`)
+                })
+            } else {
+                this.setState({databaseRef: null})
+            }
+        })
+    }
+
     submitForm(event) {
         event.preventDefault()
         console.log(`Desc: ${this.state.description}, freq: ${this.state.frequency}, colour: ${this.state.colour}`)
-        // ???
+        this.state.databaseRef.push({
+            description: this.state.description,
+            frequency: this.state.frequency,
+            colour: this.state.colour
+        })
     }
 
     renderFormGroup({id, label, type, placeholder}) {
