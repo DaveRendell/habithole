@@ -19,7 +19,7 @@ class StartHabitForm extends Component {
     }
 
     componentDidMount() {
-        auth.onAuthStateChanged(user => {
+        this.unregisterAuthObserver = auth.onAuthStateChanged(user => {
             if (user) {
                 this.setState({
                     databaseRef: database.ref(`habits/${user.uid}`)
@@ -28,6 +28,10 @@ class StartHabitForm extends Component {
                 this.setState({databaseRef: null})
             }
         })
+    }
+
+    componentWillUnmount() {
+        this.unregisterAuthObserver()
     }
 
     submitForm(event) {
