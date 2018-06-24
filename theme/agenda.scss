@@ -1,0 +1,48 @@
+$icon-height: 33px;
+
+
+.agenda {
+    display: block;
+    max-width: 700px;
+
+    table {
+        text-align: center;
+    
+    
+        .fa.fa-dot:before {
+            content: "\25cf";
+            font-size: 2em;
+            color: lightblue;
+            line-height: $icon-height;
+        }
+
+        .toggle {
+            cursor: pointer;
+        }
+    
+        .fa-check {
+            color: lightgreen;
+            font-size: 1.5em;
+            min-height: $icon-height;
+            line-height: $icon-height;
+        }
+
+        .fa-remove {
+            color: lightcoral;
+            font-size: 1.5em;
+            min-height: $icon-height;
+            line-height: $icon-height;
+        }
+
+        .fa-minus {
+            color: lightgray;
+            font-size: 1.5em;
+            min-height: $icon-height;
+            line-height: $icon-height;
+        }
+    
+        th, td {
+            width: 8%;
+        }
+    }
+}

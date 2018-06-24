@@ -3,8 +3,6 @@ import date from 'date-and-time'
 
 import { auth, database } from '../firebase'
 
-import '../../theme/habit_done_toggle.scss'
-
 class HabitDoneToggle extends Component {
     constructor(props) {
         super(props)
@@ -54,14 +52,14 @@ class HabitDoneToggle extends Component {
 
     renderDone() {
         return <span 
-            className="fa fa-check"
+            className="toggle fa fa-check"
             onClick={this.unmarkAsDone.bind(this)}
         />
     }
 
     renderNotDone() {
         return <span 
-            className="fa fa-dot"
+            className="toggle fa fa-dot"
             onClick={this.markAsDone.bind(this)}
         />
     }

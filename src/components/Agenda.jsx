@@ -1,8 +1,11 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
+import date from 'date-and-time'
 
 import { auth, database } from '../firebase'
 import AgendaItem from './AgendaItem';
+
+import '../../theme/agenda.scss'
 
 class Agenda extends Component {
     constructor(props) {
@@ -44,20 +47,37 @@ class Agenda extends Component {
 
     render() {
         return (
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Habit</th>
-                        <th scope="col">Today</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {_.keys(this.state.habits).map(key =>
-                            this.renderAgendaItem(key, this.state.habits[key]))}
-                </tbody>
-            </table>
+            <div className="agenda">
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Habit</th>
+                            {
+                                getPastSixDays().map(day =>
+                                    <th scope='col' key={day.getTime()}>{date.format(day, 'ddd D')}</th>
+                                )
+                            }
+                            <th scope="col">Today</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {_.keys(this.state.habits).map(key =>
+                                this.renderAgendaItem(key, this.state.habits[key]))}
+                    </tbody>
+                </table>
+            </div>
+            
         )
     }
+}
+
+function getPastSixDays() {
+    const today = new Date()
+    var ret = []
+    for (var i = -6; i < 0; i++) {
+        ret.push(date.addDays(today, i))
+    }
+    return ret
 }
 
 
