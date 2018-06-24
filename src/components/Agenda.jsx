@@ -1,6 +1,5 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
-import dateformat from 'dateformat'
 
 import { auth, database } from '../firebase'
 import AgendaItem from './AgendaItem';
@@ -38,7 +37,6 @@ class Agenda extends Component {
     renderAgendaItem(key, habit) {
         return <AgendaItem 
                     habit={habit}
-                    databaseRef={this.databaseRef}
                     habitKey={key}
                     key={key}
                 />
