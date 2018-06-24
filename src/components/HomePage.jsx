@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
+import Agenda from './Agenda';
 
 class HomePage extends Component {
     render() {
         return (
-            <div><span>Home</span></div>
+            <div>
+                <h2>Home</h2>
+                <Agenda />
+            </div>
         )
     }
 }

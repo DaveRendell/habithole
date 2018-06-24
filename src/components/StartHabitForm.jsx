@@ -42,6 +42,7 @@ class StartHabitForm extends Component {
             frequency: this.state.frequency,
             colour: this.state.colour
         })
+        this.props.cancel()
     }
 
     renderFormGroup({id, label, type, placeholder}) {
