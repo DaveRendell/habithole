@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "babel-preset-stage-1": "^6.24.1",
-    "dateformat": "^3.0.3",
+    "date-and-time": "^0.6.2",
     "firebase": "^5.0.4",
     "lodash": "^4.17.10",
     "react": "^16.4.0",

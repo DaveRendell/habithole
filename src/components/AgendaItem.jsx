@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import dateformat from 'dateformat'
+import date from 'date-and-time'
 
 import HabitDoneToggle from './HabitDoneToggle';
 
 class AgendaItem extends Component {
     habitDoneToday() {
         var habit = this.props.habit
-        var today = dateformat(new Date(), 'yyyy-mm-dd')
+        var today = date.format(new Date(), 'YYYY-MM-DD')
         return _.some(habit.events, event => event.date === today)
     }
 

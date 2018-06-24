@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import dateformat from 'dateformat'
+import date from 'date-and-time'
 
 import { auth, database } from '../firebase'
 
@@ -44,7 +44,7 @@ class StartHabitForm extends Component {
             description: this.state.description,
             frequency: this.state.frequency,
             colour: this.state.colour,
-            start_date: dateformat(new Date(), 'yyyy-mm-dd')
+            start_date: date.format(new Date(), 'YYYY-MM-DD')
         })
         this.props.cancel()
     }

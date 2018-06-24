@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import dateformat from 'dateformat'
+import date from 'date-and-time'
 
 import { auth, database } from '../firebase'
 
@@ -32,7 +32,7 @@ class HabitDoneToggle extends Component {
             .child(this.props.habitKey)
             .child('events').push({
                 type: 'DONE',
-                date: dateformat(new Date(), 'yyyy-mm-dd')
+                date: date.format(new Date(), 'YYYY-MM-DD')
             })
     }
 
@@ -42,7 +42,7 @@ class HabitDoneToggle extends Component {
             .child('events')
         eventsRef
             .orderByChild('date')
-            .equalTo(dateformat(new Date(), 'yyyy-mm-dd'))
+            .equalTo(date.format(new Date(), 'YYYY-MM-DD'))
             .once('value')
             .then(snapshot => {
                 snapshot.forEach(event => {
