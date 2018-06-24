@@ -17,9 +17,26 @@ class AgendaItem extends Component {
         })
     }
 
+    habitDoneToday() {
+        var habit = this.props.habit
+        var today = dateformat(new Date(), 'yyyy-mm-dd')
+        return _.some(habit.events, event => event.date === today)
+    }
+
+    renderMarkAsDoneButton() {
+        return <Button text="Done" action={this.markAsDone}/>
+    }
+
+    renderDone() {
+        return <span>Done!</span>
+    }
+
     render() {
         return (
-            <span>{this.props.habit.description} <Button text="Done" action={this.markAsDone}/></span>
+            <tr key={this.props.habitKey}>
+                <th scope='row'>{this.props.habit.description}</th>
+                <td>{this.habitDoneToday() ? this.renderDone() : this.renderMarkAsDoneButton()}</td>
+            </tr>
         )
     }
 }

@@ -36,27 +36,28 @@ class Agenda extends Component {
     }
 
     renderAgendaItem(key, habit) {
-        return <li key={key}>
-                <AgendaItem 
+        return <AgendaItem 
                     habit={habit}
                     databaseRef={this.databaseRef}
                     habitKey={key}
+                    key={key}
                 />
-            </li>
-    }
-
-    habitDoneToday(key) {
-        var habit = this.state.habits[key]
-        var today = dateformat(new Date(), 'yyyy-mm-dd')
-        return _.some(habit.events, event => event.date === today)
     }
 
     render() {
         return (
-            <ul>
-                {_.keys(this.state.habits).map(key =>
-                    this.habitDoneToday(key) ? null : this.renderAgendaItem(key, this.state.habits[key]))}
-            </ul>
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Habit</th>
+                        <th scope="col">Today</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {_.keys(this.state.habits).map(key =>
+                            this.renderAgendaItem(key, this.state.habits[key]))}
+                </tbody>
+            </table>
         )
     }
 }
