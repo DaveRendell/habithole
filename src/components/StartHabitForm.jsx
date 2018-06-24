@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import dateformat from 'dateformat'
 
 import { auth, database } from '../firebase'
 
@@ -36,11 +37,14 @@ class StartHabitForm extends Component {
 
     submitForm(event) {
         event.preventDefault()
-        console.log(`Desc: ${this.state.description}, freq: ${this.state.frequency}, colour: ${this.state.colour}`)
+        
+
+
         this.state.databaseRef.push({
             description: this.state.description,
             frequency: this.state.frequency,
-            colour: this.state.colour
+            colour: this.state.colour,
+            start_date: dateformat(new Date(), 'yyyy-mm-dd')
         })
         this.props.cancel()
     }

@@ -11,11 +11,9 @@ class AgendaItem extends Component {
     }
 
     markAsDone() {
-        const today = new Date()
-        console.log(today)
         this.props.databaseRef.child(this.props.habitKey).child('events').push({
             type: 'DONE',
-            date: dateformat(today, 'yyyy-mm-dd')
+            date: dateformat(new Date(), 'yyyy-mm-dd')
         })
     }
 
