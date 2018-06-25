@@ -38,7 +38,7 @@ class HabitList extends Component {
         return (
             <ul>
                 {_.keys(this.state.habits).map(key =>
-                    <li key={key}><HabitCard habit={this.state.habits[key]} databaseRef={this.databaseRef} habitKey={key} /></li>)}
+                    <li key={key}><HabitCard habit={this.state.habits[key]} habitKey={key} /></li>)}
             </ul>
         )
     }
