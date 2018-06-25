@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Agenda from './Agenda';
+import Agenda from './agenda/Agenda';
 
 import '../../theme/home_page.scss'
 

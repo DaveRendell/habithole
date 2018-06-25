@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
 
-import { auth, database } from '../firebase'
+import { auth, database } from '../../firebase'
 import HabitCard from './HabitCard';
 
 class HabitList extends Component {

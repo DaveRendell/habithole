@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 
-import NavigationBar from './components/NavigationBar';
+import NavigationBar from './components/navigation_bar/NavigationBar';
 import HomePage from './components/HomePage';
 import HabitsPage from './components/HabitsPage';
 

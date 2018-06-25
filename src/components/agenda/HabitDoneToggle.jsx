@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import date from 'date-and-time'
 
-import { auth, database } from '../firebase'
+import { auth, database } from '../../firebase'
 
 class HabitDoneToggle extends Component {
     constructor(props) {

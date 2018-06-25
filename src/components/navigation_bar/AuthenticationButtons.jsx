@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import Modal from 'react-modal'
 
-import Button from './Button'
+import Button from '../Button'
 import AuthenticationForm from './AuthenticationForm';
 
-import { auth } from '../firebase'
+import { auth } from '../../firebase'
 
 const SIGN_IN = 'sign_in'
 const SIGN_UP = 'sign_up'

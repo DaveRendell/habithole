@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
 import AuthenticationButtons from './AuthenticationButtons'
-import Button from './Button'
+import Button from '../Button'
 
-import { auth } from '../firebase'
+import { auth } from '../../firebase'
 
 class UserInfo extends Component {
     constructor(props) {

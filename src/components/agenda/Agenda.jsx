@@ -2,10 +2,10 @@ import _ from 'lodash'
 import React, { Component } from 'react'
 import date from 'date-and-time'
 
-import { auth, database } from '../firebase'
+import { auth, database } from '../../firebase'
 import AgendaItem from './AgendaItem';
 
-import '../../theme/agenda.scss'
+import '../../../theme/agenda.scss'
 
 class Agenda extends Component {
     constructor(props) {
