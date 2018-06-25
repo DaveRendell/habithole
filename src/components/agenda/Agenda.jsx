@@ -1,8 +1,8 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
-import date from 'date-and-time'
 
 import { auth, database } from '../../firebase'
+import { getPastNDays, shorthandFormat } from '../../helpers/date'
 import AgendaItem from './AgendaItem';
 
 import '../../../theme/agenda.scss'
@@ -53,8 +53,8 @@ class Agenda extends Component {
                         <tr>
                             <th scope="col">Habit</th>
                             {
-                                getPastSixDays().map(day =>
-                                    <th scope='col' key={day.getTime()}>{date.format(day, 'ddd D')}</th>
+                                getPastNDays(6).map(day =>
+                                    <th scope='col' key={day.getTime()}>{shorthandFormat(day)}</th>
                                 )
                             }
                             <th scope="col">Today</th>
@@ -69,15 +69,6 @@ class Agenda extends Component {
             
         )
     }
-}
-
-function getPastSixDays() {
-    const today = new Date()
-    var ret = []
-    for (var i = -6; i < 0; i++) {
-        ret.push(date.addDays(today, i))
-    }
-    return ret
 }
 
 

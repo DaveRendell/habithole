@@ -1,20 +1,20 @@
 import React, { Component } from 'react'
-import date from 'date-and-time'
 
+import { formatAsString, parseFromString, getPastNDays } from '../../helpers/date'
 import HabitDoneToggle from './HabitDoneToggle'
 import HabitDonePast from './HabitDonePast'
 
 class AgendaItem extends Component {
     habitDoneOnDay(day) {
         var habit = this.props.habit
-        var dayString = date.format(day, 'YYYY-MM-DD')
+        var dayString = formatAsString(day)
         return _.some(habit.events, event => event.date === dayString)
     }
 
     habitIsActiveOnDay(day) {
         var habit = this.props.habit
-        const startDate = date.parse(habit.start_date, 'YYYY-MM-DD')
-        return date.subtract(day, startDate).toHours() > 0
+        const startDate = parseFromString(habit.start_date)
+        return day.getTime() - startDate.getTime() > 0
     }
 
     render() {
@@ -22,7 +22,7 @@ class AgendaItem extends Component {
             <tr>
                 <th scope='row'>{this.props.habit.description}</th>
                 {
-                    getPastSixDays().map(day =>
+                    getPastNDays(6).map(day =>
                         <td key={day.getTime()}>
                             <HabitDonePast 
                                 isDone={this.habitDoneOnDay(day)}
@@ -40,15 +40,6 @@ class AgendaItem extends Component {
             </tr>
         )
     }
-}
-
-function getPastSixDays() {
-    const today = new Date()
-    var ret = []
-    for (var i = -6; i < 0; i++) {
-        ret.push(date.addDays(today, i))
-    }
-    return ret
 }
 
 export default AgendaItem

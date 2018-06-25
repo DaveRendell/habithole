@@ -1,5 +1,6 @@
-import date from 'date-and-time'
 import { auth, database } from '../firebase'
+
+import { todaysDateAsString } from '../helpers/date'
 
 
 function getDatabaseReference() {
@@ -16,7 +17,7 @@ export function createHabit(
         description: description,
         frequency: frequency,
         colour: colour,
-        start_date: date.format(new Date(), 'YYYY-MM-DD')
+        start_date: todaysDateAsString()
     })
 }
 
@@ -29,7 +30,7 @@ export function markAsDone(habitKey) {
             .child(habitKey)
             .child('events').push({
                 type: 'DONE',
-                date: date.format(new Date(), 'YYYY-MM-DD')
+                date: todaysDateAsString()
             })
 }
 
@@ -40,7 +41,7 @@ export function unmarkAsDone(habitKey) {
 
     eventsRef
         .orderByChild('date')
-        .equalTo(date.format(new Date(), 'YYYY-MM-DD'))
+        .equalTo(todaysDateAsString())
         .once('value')
         .then(snapshot => {
             snapshot.forEach(event => {

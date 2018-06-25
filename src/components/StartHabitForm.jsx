@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import date from 'date-and-time'
 
 import { auth, database } from '../firebase'
 import { createHabit } from '../actions/habits'
