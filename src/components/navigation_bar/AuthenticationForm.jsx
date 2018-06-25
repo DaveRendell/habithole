@@ -31,7 +31,7 @@ class AuthenticationForm extends Component {
                     id={'auth-' + id}
                     placeholder={placeholder}
                     value={this.state[id]}
-                    onInput={(event) => {
+                    onChange={(event) => {
                         const newState = {}
                         newState[id] = event.target.value
                         this.setState(newState)
