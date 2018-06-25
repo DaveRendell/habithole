@@ -1,37 +1,50 @@
-$cell-size: 42px;
+$cell-size: 46px;
 
 .habit-page {
     width: 100%;
     height: 100%;
     padding: 16px;
+    max-width: 700px;
+    margin: 0 auto;
+    h2 {
+        text-align: center;
+    }
 
     .calendar {
+        margin: 0 auto;
+        width: 350px;
         .week {
             display: block;
+            padding: 0 12px;
             .day {
                 display: inline-block;
-                width: $cell-size;
+                width: 14.2%;
+                max-width: $cell-size;
                 height: $cell-size;
                 line-height: $cell-size;
                 font-size: 28px;
                 color: lightgrey;
                 font-weight: bold;
-                border: 1px solid #68686873;
+                border: 1px solid #b8b8b873;
                 border-collapse: collapse;
                 margin-left: -1px;
                 margin-top: -1px;
                 padding-left: 1px;
                 padding-top: 1px;
                 text-align: center;
+                -webkit-user-select: none;     
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
 
                 &.not-done {
-                    color: lightcoral;
-                    background-color: rgb(241, 184, 184);
+                    color: rgb(236, 160, 160);
+                    background-color: rgb(236, 208, 208);
                 }
 
                 &.done {
-                    color: lightgreen;
-                    background-color: rgb(200, 236, 200);
+                    color: rgb(142, 214, 142);
+                    background-color: rgb(196, 250, 208);
                 }
             }
         }
