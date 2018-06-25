@@ -12,34 +12,15 @@ class StartHabitForm extends Component {
             description: '',
             frequency: 'DAILY',
             colour: 'RED',
-            loading: false,
-            databaseRef: null
+            loading: false
         }
 
         this.submitForm = this.submitForm.bind(this)
     }
 
-    componentDidMount() {
-        this.unregisterAuthObserver = auth.onAuthStateChanged(user => {
-            if (user) {
-                this.setState({
-                    databaseRef: database.ref(`habits/${user.uid}`)
-                })
-            } else {
-                this.setState({databaseRef: null})
-            }
-        })
-    }
-
-    componentWillUnmount() {
-        this.unregisterAuthObserver()
-    }
-
     submitForm(event) {
-        event.preventDefault()
-        
+        event.preventDefault()        
         createHabit(this.state.description)
-
         this.props.cancel()
     }
 
