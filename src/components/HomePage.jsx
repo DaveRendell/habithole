@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import Agenda from './Agenda';
 
+import '../../theme/home_page.scss'
+
 class HomePage extends Component {
     render() {
         return (
-            <div>
-                <h2>Home</h2>
+            <div className="home-page">
                 <Agenda />
             </div>
         )

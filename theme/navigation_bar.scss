@@ -1,3 +1,18 @@
-.auth-button {
-    margin-right: 16px;
+.navigation-bar {
+    background-color: #a1ec93;
+    -webkit-box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.36);
+    -moz-box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.36);
+    box-shadow: 0px 2px 0px 0px rgba(180, 180, 180, 0.171);
+    
+    .auth-button {
+        margin-right: 16px;
+    }
+
+    .brand {
+        font-weight: bolder;
+        color: white;
+        font-size: 36px;
+        text-shadow: 1px 1px 1px rgba(78, 78, 78, 0.144);
+        text-decoration: none;        
+    }
 }
