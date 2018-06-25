@@ -1,42 +1,13 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
 
-import { auth, database } from '../../firebase'
 import { getPastNDays, shorthandFormat } from '../../helpers/date'
+import withHabits from '../../hocs/with_habits'
 import AgendaItem from './AgendaItem';
 
 import '../../../theme/agenda.scss'
 
 class Agenda extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            habits: []
-        }
-    }
-
-    componentDidMount() {
-        this.unregisterAuthObserver = auth.onAuthStateChanged( user => {
-            if (user) {
-                this.databaseRef =  database.ref(`habits/${user.uid}`)
-                this.databaseCallback = this.databaseRef.on('value', snap =>
-                    this.setState({habits: snap.val()})
-                )
-            } else {
-                this.databaseRef = null
-                this.databaseCallback = null
-            }
-        })
-    }
-
-    componentWillUnmount() {
-        this.unregisterAuthObserver()
-        if (this.databaseRef) {
-            this.databaseRef.off('value', this.databaseCallback)
-        }
-    }
-
     renderAgendaItem(key, habit) {
         return <AgendaItem 
                     habit={habit}
@@ -61,8 +32,8 @@ class Agenda extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {_.keys(this.state.habits).map(key =>
-                                this.renderAgendaItem(key, this.state.habits[key]))}
+                        {_.keys(this.props.habits).map(key =>
+                                this.renderAgendaItem(key, this.props.habits[key]))}
                     </tbody>
                 </table>
             </div>
@@ -71,6 +42,4 @@ class Agenda extends Component {
     }
 }
 
-
-
-export default Agenda
+export default withHabits(Agenda)
