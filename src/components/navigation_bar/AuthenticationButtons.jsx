@@ -4,7 +4,7 @@ import Modal from 'react-modal'
 import Button from '../Button'
 import AuthenticationForm from './AuthenticationForm';
 
-import { auth } from '../../firebase'
+import { signIn, signUp } from '../../actions/user'
 
 const SIGN_IN = 'sign_in'
 const SIGN_UP = 'sign_up'
@@ -38,22 +38,28 @@ class AuthenticationButtons extends Component {
     getModalContent() {
         switch (this.state.modalType) {
             case SIGN_UP: 
-                return <AuthenticationForm action={this.signUpAction} cancel={this.closeModal} text='Sign Up' />
+                return <AuthenticationForm 
+                    action={this.signUpAction} 
+                    cancel={this.closeModal} 
+                    text='Sign Up' 
+                />
             case SIGN_IN: 
-                return <AuthenticationForm action={this.signInAction} cancel={this.closeModal} text='Sign In' />
+                return <AuthenticationForm 
+                    action={this.signInAction} 
+                    cancel={this.closeModal} 
+                    text='Sign In' 
+                />
             default: 
                 return ''
         }
     }
 
     signUpAction(email, password) {
-        auth.createUserWithEmailAndPassword(email, password)
-            .then(this.closeModal)
+        signUp(email, password).then(this.closeModal)
     }
 
     signInAction(email, password) {
-        auth.signInWithEmailAndPassword(email, password)
-            .then(this.closeModal)
+        signIn(email, password).then(this.closeModal)
     }
 
     closeModal() {

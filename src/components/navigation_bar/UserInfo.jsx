@@ -3,31 +3,12 @@ import React, { Component } from 'react'
 import AuthenticationButtons from './AuthenticationButtons'
 import Button from '../Button'
 
-import { auth } from '../../firebase'
+import withUser from '../../hocs/with_user'
+import { signOut } from '../../actions/user'
 
 class UserInfo extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            signedIn: false,
-            user: null
-        }
-    }
-
-    componentDidMount() {
-        this.unregisterAuthObserver = 
-            auth.onAuthStateChanged(user =>
-                this.setState({signedIn: !!user, user})    
-            )
-    }
-
-    componentWillUnmount() {
-        this.unregisterAuthObserver();
-    }
-
     renderSignedIn() {
-        return <Button text="Sign Out" action={() => auth.signOut()} />
+        return <Button text="Sign Out" action={signOut} />
     }
 
     renderSignedOut() {
@@ -35,10 +16,10 @@ class UserInfo extends Component {
     }
 
     render() {
-        return this.state.signedIn
+        return this.props.user
             ? this.renderSignedIn()
             : this.renderSignedOut()
     }
 }
 
-export default UserInfo
+export default withUser(UserInfo)
