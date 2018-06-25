@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 import { formatAsString, parseFromString, getPastNDays } from '../../helpers/date'
 import HabitDoneToggle from './HabitDoneToggle'
@@ -20,7 +21,9 @@ class AgendaItem extends Component {
     render() {
         return (
             <tr>
-                <th scope='row'>{this.props.habit.description}</th>
+                <th scope='row'>
+                    <Link to={`/habit/${this.props.habitKey}`}>{this.props.habit.description}</Link>
+                </th>
                 {
                     getPastNDays(6).map(day =>
                         <td key={day.getTime()}>
