@@ -1,5 +1,39 @@
+$cell-size: 42px;
+
 .habit-page {
     width: 100%;
     height: 100%;
     padding: 16px;
+
+    .calendar {
+        .week {
+            display: block;
+            .day {
+                display: inline-block;
+                width: $cell-size;
+                height: $cell-size;
+                line-height: $cell-size;
+                font-size: 28px;
+                color: lightgrey;
+                font-weight: bold;
+                border: 1px solid #68686873;
+                border-collapse: collapse;
+                margin-left: -1px;
+                margin-top: -1px;
+                padding-left: 1px;
+                padding-top: 1px;
+                text-align: center;
+
+                &.not-done {
+                    color: lightcoral;
+                    background-color: rgb(241, 184, 184);
+                }
+
+                &.done {
+                    color: lightgreen;
+                    background-color: rgb(200, 236, 200);
+                }
+            }
+        }
+    }
 }
