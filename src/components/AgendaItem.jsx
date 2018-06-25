@@ -14,7 +14,7 @@ class AgendaItem extends Component {
     habitIsActiveOnDay(day) {
         var habit = this.props.habit
         const startDate = date.parse(habit.start_date, 'YYYY-MM-DD')
-        return date.subtract(day, startDate).toDays() > 0
+        return date.subtract(day, startDate).toHours() > 0
     }
 
     render() {
