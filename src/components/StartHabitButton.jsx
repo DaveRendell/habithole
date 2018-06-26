@@ -27,7 +27,7 @@ class StartHabitButton extends Component {
     render() {
         return (
             <div>
-                <Button text='Start Habit' action={this.openModal} />
+                <Button text='Start New Habit' action={this.openModal} />
                 <Modal
                     isOpen={this.state.isOpen}
                     contentLabel="Start Habit"

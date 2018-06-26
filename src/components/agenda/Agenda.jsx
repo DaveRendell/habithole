@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import { getPastNDays, shorthandFormat } from '../../helpers/date'
 import withHabits from '../../hocs/with_habits'
 import AgendaItem from './AgendaItem';
+import StartHabitButton from '../StartHabitButton'
 
 import '../../../theme/agenda.scss'
 
@@ -34,6 +35,9 @@ class Agenda extends Component {
                     <tbody>
                         {_.keys(this.props.habits).map(key =>
                                 this.renderAgendaItem(key, this.props.habits[key]))}
+                        <tr>
+                            <StartHabitButton />
+                        </tr>
                     </tbody>
                 </table>
             </div>
