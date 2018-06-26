@@ -36,7 +36,7 @@ class Agenda extends Component {
                         {_.keys(this.props.habits).map(key =>
                                 this.renderAgendaItem(key, this.props.habits[key]))}
                         <tr>
-                            <StartHabitButton />
+                            <td><StartHabitButton /></td>
                         </tr>
                     </tbody>
                 </table>
