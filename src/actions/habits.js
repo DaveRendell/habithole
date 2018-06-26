@@ -65,3 +65,10 @@ export function unmarkAsDone(habitKey, day = new Date()) {
         })
 
 }
+
+export function editDescription(habitKey, newDescription) {
+    return getDatabaseReference()
+        .child(habitKey)
+        .child('description')
+        .set(newDescription)
+}
