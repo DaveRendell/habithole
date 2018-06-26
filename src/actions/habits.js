@@ -11,13 +11,11 @@ function getDatabaseReference() {
 
 export function createHabit(
     description,
-    frequency = 'DAILY',
-    colour = 'RED'
+    activeDays
 ) {
     getDatabaseReference().push({
         description: description,
-        frequency: frequency,
-        colour: colour,
+        active_days: activeDays,
         start_date: todaysDateAsString()
     })
 }
