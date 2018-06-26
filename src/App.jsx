@@ -3,7 +3,6 @@ import { BrowserRouter, Route } from 'react-router-dom'
 
 import NavigationBar from './components/navigation_bar/NavigationBar';
 import HomePage from './components/HomePage';
-import HabitsPage from './components/HabitsPage';
 import HabitPage from './components/HabitPage';
 
 class App extends Component {
@@ -13,7 +12,6 @@ class App extends Component {
                 <div>
                     <NavigationBar />
                     <Route exact path='/' component={HomePage} />
-                    <Route exact path='/habits' component={HabitsPage} />
                     <Route exact path="/habit/:id" component={HabitPage} />
                 </div>
             </BrowserRouter>
