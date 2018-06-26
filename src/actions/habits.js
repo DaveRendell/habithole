@@ -22,7 +22,7 @@ export function createHabit(
 }
 
 export function deleteHabit(habitKey) {
-    getDatabaseReference().child(habitKey).remove()
+    return getDatabaseReference().child(habitKey).remove()
 }
 
 export function markAsDone(habitKey) {
