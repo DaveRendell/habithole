@@ -36,9 +36,9 @@ class DeleteHabitButton extends Component {
                 <Modal
                     style={{
                         content: {
-                            'max-width': '400px',
-                            'height': '140px',
-                            'margin': '25% auto 75% auto'
+                            maxWidth: '400px',
+                            height: '140px',
+                            margin: '25% auto 75% auto'
                             
                         }
                     }}
