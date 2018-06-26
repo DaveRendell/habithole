@@ -42,6 +42,22 @@ export function getPastNWeeks(n) {
     })
 }
 
+export function getDayOfMonth(day) {
+    return date.format(day, 'D')
+}
+
+export function isToday(day) {
+    return date.isSameDay(day, new Date())
+}
+
+export function getShortMonthName(day) {
+    return date.format(day, 'MMM')
+}
+
+export function dayOfWeek(day) {
+    return date.format(day, 'dddd')
+}
+
 function getStartOfCurrentWeek() {
     const today = new Date()
     const dayOfWeek = date.format(today, 'dddd')
@@ -55,16 +71,4 @@ function getStartOfCurrentWeek() {
         'Sunday': -6
     }
     return date.addDays(today, daysAsNumbers[dayOfWeek])
-}
-
-export function getDayOfMonth(day) {
-    return date.format(day, 'D')
-}
-
-export function isToday(day) {
-    return date.isSameDay(day, new Date())
-}
-
-export function getShortMonthName(day) {
-    return date.format(day, 'MMM')
 }

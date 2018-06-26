@@ -16,11 +16,19 @@ class HabitDoneToggle extends Component {
             onClick={() => markAsDone(this.props.habitKey)}
         />
     }
+
+    renderNotActive() {
+        return <span 
+            className="fa fa-minus"
+        />
+    }
     
     render() {
         return this.props.isDone
-                ? this.renderDone()
-                : this.renderNotDone()
+            ? this.renderDone()
+            : this.props.isActive
+                ? this.renderNotDone()
+                : this.renderNotActive()
     }
 }
 

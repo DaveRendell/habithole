@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { formatAsString, parseFromString, isToday } from './date'
+import { formatAsString, parseFromString, isToday, dayOfWeek } from './date'
 
 export const HabitState = {
     NOT_ACTIVE: 'habit_state_not_active',
@@ -17,6 +17,10 @@ export function getHabitStateOnDay(habit, day) {
     }
 
     if (day.getTime() - startDate.getTime() <= 0) {
+        return HabitState.NOT_ACTIVE
+    }
+
+    if (!habit.active_days[dayOfWeek(day)]) {
         return HabitState.NOT_ACTIVE
     }
 
