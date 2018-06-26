@@ -64,3 +64,7 @@ export function getDayOfMonth(day) {
 export function isToday(day) {
     return date.isSameDay(day, new Date())
 }
+
+export function getShortMonthName(day) {
+    return date.format(day, 'MMM')
+}
