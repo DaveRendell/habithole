@@ -11,6 +11,8 @@ class Day extends Component {
                 return 'done'
             case HabitState.NOT_DONE:
                 return 'not-done'
+            case HabitState.TODO_TODAY:
+                return 'todo-today'
             default:
                 return 'not-active'
         }

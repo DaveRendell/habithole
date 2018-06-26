@@ -60,3 +60,7 @@ function getStartOfCurrentWeek() {
 export function getDayOfMonth(day) {
     return date.format(day, 'D')
 }
+
+export function isToday(day) {
+    return date.isSameDay(day, new Date())
+}

@@ -46,6 +46,11 @@ $cell-size: 46px;
                     color: rgb(142, 214, 142);
                     background-color: rgb(196, 250, 208);
                 }
+
+                &.todo-today {
+                    color: rgb(136, 194, 230);
+                    background-color: rgb(202, 226, 241);
+                }
             }
         }
     }
