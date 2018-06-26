@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 
 import { getDayOfMonth, getShortMonthName } from '../../helpers/date'
 import { HabitState, getHabitStateOnDay } from '../../helpers/habits'
+import { toggleHabitOnDay } from '../../actions/habits'
 
 class Day extends Component {
-    getClassName() {
+    getStateClassName() {
         const state = getHabitStateOnDay(this.props.habit, this.props.day)
         switch(state) {
             case HabitState.DONE:
@@ -18,13 +19,30 @@ class Day extends Component {
         }
     }
 
+    getBaseClassName() {
+        if (this.props.editMode) {
+            return 'toggle day'
+        } else {
+            return 'day'
+        }
+    }
+
     renderMonthName() {
         return <span className="month-name">{getShortMonthName(this.props.day)}</span>
     }
 
+    onClickAction() {
+        if (this.props.editMode) {
+            toggleHabitOnDay(this.props.habitKey, this.props.day)
+        }
+    }
+
     render() {
         return (
-            <div className={`day ${this.getClassName()}`}>
+            <div 
+                className={`${this.getBaseClassName()} ${this.getStateClassName()}`}
+                onClick={this.onClickAction.bind(this)}
+            >
                 {
                     getDayOfMonth(this.props.day) == 1
                         ? this.renderMonthName()

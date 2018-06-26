@@ -9,7 +9,7 @@ class HabitInfo extends Component {
         return (
             this.props.habit ? <div>
                 <h2>{this.props.habit.description}</h2>
-                <Calendar habit={this.props.habit}/>
+                <Calendar habit={this.props.habit} habitKey={this.props.habitKey} />
                 <DeleteHabitButton habit={this.props.habit} habitKey={this.props.habitKey} />
             </div> : null
         )

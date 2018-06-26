@@ -14,7 +14,13 @@ class Week extends Component {
         return (
             <div className="week">
                 {this.props.week.map(day => 
-                    <Day key={day.getTime()} day={day} habit={this.props.habit} />
+                    <Day 
+                        key={day.getTime()} 
+                        day={day} 
+                        habit={this.props.habit} 
+                        habitKey={this.props.habitKey}
+                        editMode={this.props.editMode}
+                    />
                 )}
             </div>
         )

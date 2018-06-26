@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import { formatAsString, parseFromString, isToday } from './date'
 
 export const HabitState = {

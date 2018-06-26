@@ -37,6 +37,10 @@ $cell-size: 46px;
                 -ms-user-select: none;
                 user-select: none;
                 position: relative;
+                
+                &.toggle {
+                    cursor: pointer;
+                }
 
                 &.not-done {
                     color: rgb(236, 160, 160);
