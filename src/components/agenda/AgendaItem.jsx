@@ -1,24 +1,11 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import { formatAsString, parseFromString, getPastNDays } from '../../helpers/date'
-import { getHabitStateOnDay, HabitState } from '../../helpers/habits'
-import HabitDoneToggle from './HabitDoneToggle'
-import HabitDonePast from './HabitDonePast'
+import { getPastNDays } from '../../helpers/date'
+import { getHabitStateOnDay } from '../../helpers/habits'
+import HabitDayMarker from './HabitDayMarker';
 
 class AgendaItem extends Component {
-    habitDoneOnDay(day) {
-        const habit = this.props.habit
-        const state = getHabitStateOnDay(habit, day)
-        return state == HabitState.DONE
-    }
-
-    habitIsActiveOnDay(day) {
-        const habit = this.props.habit
-        const state = getHabitStateOnDay(habit, day)
-        return state != HabitState.NOT_ACTIVE
-    }
-
     render() {
         return (
             <tr>
@@ -28,18 +15,18 @@ class AgendaItem extends Component {
                 {
                     getPastNDays(6).map(day =>
                         <td key={day.getTime()}>
-                            <HabitDonePast 
-                                isDone={this.habitDoneOnDay(day)}
-                                isActive={this.habitIsActiveOnDay(day)}
+                            <HabitDayMarker 
+                                habitState={getHabitStateOnDay(this.props.habit, day)}
+                                toggle={false}
                             />
                         </td>
                     )
                 }
                 <td>
-                    <HabitDoneToggle 
-                        isDone={this.habitDoneOnDay(new Date())}
-                        isActive={this.habitIsActiveOnDay(new Date())}
-                        habitKey={this.props.habitKey} 
+                    <HabitDayMarker 
+                        habitKey={this.props.habitKey}
+                        habitState={getHabitStateOnDay(this.props.habit, new Date())}
+                        toggle={true}
                     />
                 </td>
             </tr>
