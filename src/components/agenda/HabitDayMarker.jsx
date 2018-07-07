@@ -12,7 +12,7 @@ class HabitDayMarker extends Component {
             case HabitState.NOT_DONE:
                 return 'fa fa-remove';
             case HabitState.TODO_TODAY:
-                return 'fa fa-dot';
+                return 'fa fa-circle';
             case HabitState.NOT_ACTIVE:
                 return 'fa fa-minus';
         }

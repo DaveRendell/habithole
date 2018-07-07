@@ -1,52 +1,74 @@
 $icon-height: 33px;
+$cell-height: 60px;
+$cell-width: 80px;
 
 
 .agenda {
-    display: block;
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
     background-color: white;
     border: 1px solid #d8d8d8;
     border-radius: 2px;
+    padding: 16px;
 
-    table {
-        text-align: center;
-    
-    
-        .fa.fa-dot:before {
-            content: "\25cf";
-            font-size: 2em;
-            color: lightblue;
-            line-height: $icon-height;
-        }
+    .agenda-headings {
+        float: left;
 
-        .toggle {
-            cursor: pointer;
+        .agenda-heading {
+            width: 150px;
+            height: $cell-height;
+            line-height: $cell-height;
+            text-align: left;
+            font-weight: bold;
         }
-    
-        .fa-check {
-            color: lightgreen;
-            font-size: 1.5em;
-            min-height: $icon-height;
-            line-height: $icon-height;
-        }
+    }
 
-        .fa-remove {
-            color: lightcoral;
-            font-size: 1.5em;
-            min-height: $icon-height;
-            line-height: $icon-height;
-        }
-
-        .fa-minus {
-            color: lightgray;
-            font-size: 1.5em;
-            min-height: $icon-height;
-            line-height: $icon-height;
-        }
+    .agenda-content-wrapper {
+        overflow-x: auto;
+        .agenda-content {
+            .agenda-content-row {
+                display: flex;
+                flex-direction: row;
     
-        th, td {
-            width: 8%;
+                .agenda-day {
+                    flex: 0 0 $cell-width;
+                    height: $cell-height;
+                    line-height: $cell-height;
+                    text-align: center;
+
+                    .fa.toggle {
+                        cursor: pointer;
+                    }
+    
+                    .fa.fa-check {
+                        color: lightgreen;
+                        font-size: 24px;
+                    }
+    
+                    .fa.fa-remove {
+                        color: lightcoral;
+                        font-size: 24px;
+                    }
+    
+                    .fa.fa-minus {
+                        color: lightgrey;
+                    }
+    
+                    .fa.fa-circle {
+                        color: lightblue;
+                        font-size: 18px;
+                    }
+                }
+    
+                .agenda-date-header {
+                    flex: 0 0 $cell-width;
+                    min-width: $cell-width;
+                    height: $cell-height;
+                    line-height: $cell-height;
+                    text-align: center;
+                    font-weight: bold;
+                }
+            }
         }
     }
 }

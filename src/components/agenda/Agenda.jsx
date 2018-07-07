@@ -1,47 +1,68 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
-import { getPastNDays, shorthandFormat } from '../../helpers/date'
 import withHabits from '../../hocs/with_habits'
-import AgendaItem from './AgendaItem';
-import StartHabitButton from '../StartHabitButton'
+import AgendaItem from './AgendaItem'
+import { getPastNDays, shorthandFormat } from '../../helpers/date'
 
 import '../../../theme/agenda.scss'
 
 class Agenda extends Component {
-    renderAgendaItem(key, habit) {
-        return <AgendaItem 
-                    habit={habit}
-                    habitKey={key}
-                    key={key}
-                />
+    constructor(props) {
+        super(props)
+    }
+
+    renderHabitHeading(habitKey) {
+        const habit = this.props.habits[habitKey]
+        return (
+            <div className="agenda-heading" key={habitKey}>
+                <Link to={`/habit/${habitKey}`}>{habit.description}</Link>
+            </div>
+        )
     }
 
     render() {
         return (
             <div className="agenda">
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Habit</th>
+                <div className="agenda-headings">
+                    <div className="agenda-heading">
+                        <span>Your Habits</span>
+                    </div>
+                    {
+                        _.keys(this.props.habits).map(key =>
+                            this.renderHabitHeading(key)
+                        )
+                    }
+                </div>
+                <div className="agenda-content-wrapper">
+                    <div className="agenda-content">
+                        <div className="agenda-content-row">
                             {
                                 getPastNDays(6).map(day =>
-                                    <th scope='col' key={day.getTime()}>{shorthandFormat(day)}</th>
+                                    <div className="agenda-date-header" key={day.getTime()}>
+                                        <span>
+                                        {shorthandFormat(day)}
+                                        </span>
+                                    </div>
                                 )
                             }
-                            <th scope="col">Today</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {_.keys(this.props.habits).map(key =>
-                                this.renderAgendaItem(key, this.props.habits[key]))}
-                        <tr>
-                            <td><StartHabitButton /></td>
-                        </tr>
-                    </tbody>
-                </table>
+                            <div className="agenda-date-header">
+                                <span>Today</span>
+                            </div>
+                        </div>
+                        {
+                            _.keys(this.props.habits).map(key =>
+                                <AgendaItem 
+                                    habit={this.props.habits[key]} 
+                                    habitKey={key} 
+                                    key={key}
+                                />
+                            )
+                        }
+                    </div>
+                </div>
             </div>
-            
         )
     }
 }
