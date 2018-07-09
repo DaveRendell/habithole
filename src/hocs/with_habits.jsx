@@ -18,7 +18,7 @@ export default function withHabits(WrappedComponent) {
                         this.databaseRef.off('value', this.databaseCallback)
                     }
                     this.databaseRef =  database.ref(`habits/${user.uid}`)
-                    this.databaseCallback = this.databaseRef.on('value', snap =>
+                    this.databaseCallback = this.databaseRef.orderByChild('position').on('value', snap =>
                         this.setState({habits: snap.val()})
                     )
                 } else {

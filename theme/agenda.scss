@@ -10,17 +10,37 @@ $cell-width: 80px;
     border: 1px solid #d8d8d8;
     border-radius: 2px;
     padding: 16px;
+    padding-bottom: 78px;
 
     .agenda-headings {
         float: left;
 
         .agenda-heading {
+            position: relative;
             width: 150px;
             height: $cell-height;
             line-height: $cell-height;
             text-align: left;
             font-weight: bold;
+
+            .grip {
+                color: white;
+                margin-right: 8px;
+                cursor: move;
+            }
+    
+            .drop-indicator {
+                position: absolute;
+                color: grey;
+                top: -8px;
+                left: 0px;
+            }
+
+            &:hover .grip {
+                color: lightgray;
+            }
         }
+        
     }
 
     .agenda-content-wrapper {
