@@ -22,60 +22,56 @@ $cell-size: 46px;
 
     .calendar {
         margin: 0 auto;
-        width: 350px;
+        width: 410px;
         .week {
             display: block;
             padding: 0 12px;
             .day {
                 display: inline-block;
                 width: 14.2%;
+                border-radius: 100%;
                 max-width: $cell-size;
                 height: $cell-size;
                 line-height: $cell-size;
-                font-size: 24px;
-                color: lightgrey;
-                font-weight: bold;
-                border: 1px solid #b8b8b873;
-                border-collapse: collapse;
-                margin-left: -1px;
-                margin-top: -1px;
-                padding-left: 1px;
+                margin: 4px;
+                font-size: 22px;
                 padding-top: 1px;
+                padding-left: 1px;
+                color: white;
+                font-weight: bold;
                 text-align: center;
                 -webkit-user-select: none;     
                 -moz-user-select: none;
                 -ms-user-select: none;
                 user-select: none;
                 position: relative;
+                background-color: lightgray;
                 
                 &.toggle {
                     cursor: pointer;
                 }
 
                 &.not-done {
-                    color: rgb(236, 160, 160);
-                    background-color: rgb(236, 208, 208);
+                    background-color: lightcoral;
                 }
 
                 &.done {
-                    color: rgb(142, 214, 142);
-                    background-color: rgb(196, 250, 208);
+                    background-color: lightgreen;
                 }
 
                 &.todo-today {
-                    color: rgb(136, 194, 230);
-                    background-color: rgb(202, 226, 241);
+                    background-color: lightblue;
                 }
 
                 .month-name {
                     position: absolute;
                     width: $cell-size;
-                    line-height: 12px;
-                    font-size: 12px;
+                    line-height: 10px;
+                    font-size: 10px;
                     text-transform: uppercase;
                     text-align: center;
                     left: 0;
-                    top: 3;
+                    top: 5px;
                 }
             }
         }
