@@ -1,18 +1,12 @@
 import React, { Component } from 'react'
 
-class Button extends Component {
-    getButtonStyleClass() {
-        switch (this.props.style) {
-            case 'primary': return '-primary'
-            case 'success': return '-success'
-            default: return ''
-        }
-    }
+import '../../theme/button.scss'
 
+class Button extends Component {
     render() {
         return (
             <button 
-                className={`auth-button btn btn-outline${this.getButtonStyleClass()}`}
+                className='button'
                 onClick={this.props.action}
                 type='button'
                 disabled={this.props.disabled}
