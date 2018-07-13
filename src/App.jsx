@@ -5,14 +5,18 @@ import NavigationBar from './components/navigation_bar/NavigationBar';
 import HomePage from './components/HomePage';
 import HabitPage from './components/HabitPage';
 
+import '../theme/app.scss'
+
 class App extends Component {
     render() {
         return (                
             <BrowserRouter>
                 <div>
                     <NavigationBar />
-                    <Route exact path='/' component={HomePage} />
-                    <Route exact path="/habit/:id" component={HabitPage} />
+                    <div className="main-content">
+                        <Route exact path='/' component={HomePage} />
+                        <Route exact path="/habit/:id" component={HabitPage} />
+                    </div>
                 </div>
             </BrowserRouter>
         )
