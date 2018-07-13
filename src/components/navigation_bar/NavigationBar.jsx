@@ -8,10 +8,16 @@ import '../../../theme/navigation_bar.scss'
 class NavigationBar extends Component {
     render() {
         return (
-            <nav className="navigation-bar navbar navbar-light justify-content-between">
-                <Link to="/" className="brand">HabitHole</Link>
-                <UserInfo />
-            </nav>
+            <div className="nav-bar">
+                <div className="nav-bar-content">
+                    <div className="nav-bar-left">
+                        <Link to="/" className="nav-bar-logo">HabitHole</Link>
+                    </div>
+                    <div className="nav-bar-right">
+                        <UserInfo />
+                    </div>
+                </div>
+            </div>
         )
     }
 }

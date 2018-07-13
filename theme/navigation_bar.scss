@@ -1,18 +1,24 @@
-.navigation-bar {
-    background-color: #a1ec93;
-    -webkit-box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.36);
-    -moz-box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.36);
-    box-shadow: 0px 2px 0px 0px rgba(180, 180, 180, 0.171);
-    
-    .auth-button {
-        margin-right: 16px;
-    }
+.nav-bar {
+    width: 100%;
+    min-width: 320px;
+    height: 48px;
+    background-color: lightgreen;
+    .nav-bar-content {
+        margin: 0 auto;
+        padding: 0 8px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        max-width: 700px;
+        align-items: center;
 
-    .brand {
-        font-weight: bolder;
-        color: white;
-        font-size: 36px;
-        text-shadow: 1px 1px 1px rgba(78, 78, 78, 0.144);
-        text-decoration: none;        
+        .nav-bar-logo {
+            font-weight: bolder;
+            color: white;
+            font-size: 30px;
+            line-height: 48px;
+            text-shadow: 1px 1px 1px rgba(78, 78, 78, 0.144);
+            text-decoration: none;        
+        }
     }
 }
