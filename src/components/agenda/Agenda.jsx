@@ -117,8 +117,11 @@ class Agenda extends Component {
                 <div className="agenda-content-wrapper">
                     <div className="agenda-content">
                         <div className="agenda-content-row">
+                            <div className="agenda-date-header">
+                                <span>Today</span>
+                            </div>
                             {
-                                getPastNDays(6).map(day =>
+                                getPastNDays(6).reverse().map(day =>
                                     <div className="agenda-date-header" key={day.getTime()}>
                                         <span>
                                         {shorthandFormat(day)}
@@ -126,9 +129,6 @@ class Agenda extends Component {
                                     </div>
                                 )
                             }
-                            <div className="agenda-date-header">
-                                <span>Today</span>
-                            </div>
                         </div>
                         {
                             this.sortedHabits().map(key =>

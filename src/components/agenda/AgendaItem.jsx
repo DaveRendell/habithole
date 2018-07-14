@@ -8,8 +8,15 @@ class AgendaItem extends Component {
     render() {
         return (
             <div className="agenda-content-row">
+                <div className="agenda-day today">
+                    <HabitDayMarker 
+                        habitKey={this.props.habitKey}
+                        habitState={getHabitStateOnDay(this.props.habit, new Date())}
+                        toggle={true}
+                    />
+                </div>
                 {
-                    getPastNDays(6).map(day =>
+                    getPastNDays(6).reverse().map(day =>
                         <div className="agenda-day" key={day.getTime()}>
                             <HabitDayMarker 
                                 habitState={getHabitStateOnDay(this.props.habit, day)}
@@ -18,13 +25,6 @@ class AgendaItem extends Component {
                         </div>
                     )
                 }
-                <div className="agenda-day today">
-                    <HabitDayMarker 
-                        habitKey={this.props.habitKey}
-                        habitState={getHabitStateOnDay(this.props.habit, new Date())}
-                        toggle={true}
-                    />
-                </div>
             </div>
         )
     }

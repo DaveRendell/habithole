@@ -44,6 +44,7 @@ $cell-width: 80px;
 
     .agenda-content-wrapper {
         overflow-x: auto;
+        direction: rtl;
         .agenda-content {
             .agenda-content-row {
                 display: flex;
