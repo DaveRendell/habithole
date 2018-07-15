@@ -6,6 +6,7 @@ import HomePage from './components/HomePage';
 import HabitPage from './components/HabitPage';
 
 import '../theme/app.scss'
+import TestPage from './components/TestPage';
 
 class App extends Component {
     render() {
@@ -16,6 +17,7 @@ class App extends Component {
                     <div className="main-content">
                         <Route exact path='/' component={HomePage} />
                         <Route exact path="/habit/:id" component={HabitPage} />
+                        <Route exact path="/test/" component={TestPage}/>
                     </div>
                 </div>
             </BrowserRouter>
