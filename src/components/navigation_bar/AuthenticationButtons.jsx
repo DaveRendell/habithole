@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Modal from 'react-modal'
 
 import Button from '../Button'
-import AuthenticationForm from './AuthenticationForm';
+import Form from '../Form'
 
 import { signIn, signUp } from '../../actions/user'
 
@@ -38,27 +38,61 @@ class AuthenticationButtons extends Component {
     getModalContent() {
         switch (this.state.modalType) {
             case SIGN_UP: 
-                return <AuthenticationForm 
-                    action={this.signUpAction} 
+                return <Form
+                    fields={[
+                        {
+                            id: 'email',
+                            label: 'Email',
+                            type: 'text',
+                            textType: 'email',
+                            validator: input => input.find('@') > -1,
+                            advice: 'Please enter a valid email address',
+                            required: true
+                        },
+                        {
+                            id: 'password',
+                            label: 'Password',
+                            type: 'text',
+                            textType: 'password',
+                            required: true
+                        }
+                    ]}
+                    action={this.signUpAction}
                     cancel={this.closeModal} 
-                    text='Sign Up' 
                 />
             case SIGN_IN: 
-                return <AuthenticationForm 
-                    action={this.signInAction} 
+                return <Form
+                    fields={[
+                        {
+                            id: 'email',
+                            label: 'Email',
+                            type: 'text',
+                            textType: 'email',
+                            validator: input => input.search('@') > -1,
+                            advice: 'Please enter a valid email address',
+                            required: true
+                        },
+                        {
+                            id: 'password',
+                            label: 'Password',
+                            type: 'text',
+                            textType: 'password',
+                            required: true
+                        }
+                    ]}
+                    action={this.signInAction}
                     cancel={this.closeModal} 
-                    text='Sign In' 
                 />
             default: 
                 return ''
         }
     }
 
-    signUpAction(email, password) {
+    signUpAction({email, password}) {
         signUp(email, password).then(this.closeModal)
     }
 
-    signInAction(email, password) {
+    signInAction({email, password}) {
         signIn(email, password).then(this.closeModal)
     }
 

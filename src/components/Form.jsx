@@ -175,11 +175,6 @@ class Form extends Component {
                     {
                         options.map( option =>
                             <div className="check-box" key={option.id}>
-                                <label
-                                    htmlFor={`option-${option.id}`}
-                                >
-                                    {option.label}
-                                </label>
                                 <input
                                     key={option.id}
                                     id={`option-${option.id}`}
@@ -192,6 +187,11 @@ class Form extends Component {
                                         }
                                     }
                                 />
+                                <label
+                                    htmlFor={`option-${option.id}`}
+                                >
+                                    {option.label}
+                                </label>
                             </div>
                         )
                     }
