@@ -73,7 +73,7 @@ class Agenda extends Component {
                         : null
                 }
                 <span 
-                    className="grip fa fa-th-large" 
+                    className="grip fa fa-bars" 
                     draggable 
                     onDragStart={e => 
                         this.onDragStart(
@@ -96,7 +96,6 @@ class Agenda extends Component {
             <div className="agenda">
                 <div className="agenda-headings">
                     <div className="agenda-heading">
-                        <span>Your Habits</span>
                     </div>
                     {
                         this.sortedHabits().map(key =>

@@ -13,19 +13,41 @@ $cell-width: 80px;
 
     .agenda-headings {
         float: left;
+        border-right: 1px solid lightgrey;
 
         .agenda-heading {
             position: relative;
-            width: 150px;
+            width: 160px;
             height: $cell-height;
-            line-height: $cell-height;
             text-align: left;
             font-weight: bold;
+            
+            a {
+                display: table-cell;
+                float: right;
+                vertical-align: middle;
+                text-align: right;
+                width: 100%;
+                margin-right: 6px;
+                color: blue;
+                text-decoration: none;
+                text-overflow: ellipsis;
+                &:visited {
+                    color: blue;
+                }
+                &:hover {
+                    color: lightblue;
+                }
+            }
 
             .grip {
                 color: white;
                 margin-right: 8px;
                 cursor: move;
+                display: inline-block;
+                height: 0;
+                top: 20px;
+                position: relative;
             }
     
             .drop-indicator {
