@@ -187,7 +187,7 @@ class Form extends Component {
                                     value={values[option.id]}
                                     onChange={event => {
                                             var newValue = this.getValue(id)
-                                            newValue[option.id] = event.target.value
+                                            newValue[option.id] = !!event.target.value
                                             this.setValue(id, newValue)
                                         }
                                     }
