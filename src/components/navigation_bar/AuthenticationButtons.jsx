@@ -45,7 +45,7 @@ class AuthenticationButtons extends Component {
                             label: 'Email',
                             type: 'text',
                             textType: 'email',
-                            validator: input => input.find('@') > -1,
+                            validator: input => input.search('@') > -1,
                             advice: 'Please enter a valid email address',
                             required: true
                         },
