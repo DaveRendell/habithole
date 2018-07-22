@@ -1,14 +1,7 @@
-$cell-size: 46px;
+@import "mixins/page";
 
 .habit-page {
-    max-width: 800px;
-    min-width: 320px;
-    margin: 0 auto;
-    border-radius: 4px;
-    border: 1px solid lightgrey;
-    background-color: white;
-    padding: 16px;
-    height: 100%;
+    @include page();
 
     .habit-title {
         h2 {
@@ -78,17 +71,6 @@ $cell-size: 46px;
     
                     &.todo-today {
                         background-color: lightblue;
-                    }
-    
-                    .month-name {
-                        position: absolute;
-                        width: $cell-size;
-                        line-height: 10px;
-                        font-size: 10px;
-                        text-transform: uppercase;
-                        text-align: center;
-                        left: 0;
-                        top: 5px;
                     }
                 }
             }

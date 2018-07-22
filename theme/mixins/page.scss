@@ -1,0 +1,16 @@
+@import "global_variables";
+
+$page-background: white;
+
+@mixin page() {
+    max-width: $max-app-width;
+    margin: 0 auto;
+    background-color: $page-background;
+    padding: 16px;
+    height: 100%;
+
+    @media screen and (min-width: $mobile-max-width) {
+        border-radius: 4px;
+        border: 1px solid lightgrey;
+    }
+}

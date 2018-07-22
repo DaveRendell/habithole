@@ -1,8 +1,13 @@
+@import "global_variables";
+
 body {
     background-color: #e7eff1;
     margin: 0;
     font-family: sans-serif;
+    min-width: $min-app-width;
     .main-content {
-        padding: 8px;
+        @media screen and (min-width: 600px) {
+            padding: 8px;
+        }
     }
 }
