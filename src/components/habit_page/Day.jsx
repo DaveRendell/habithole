@@ -43,12 +43,14 @@ class Day extends Component {
                 className={`${this.getBaseClassName()} ${this.getStateClassName()}`}
                 onClick={this.onClickAction.bind(this)}
             >
-                {
-                    getDayOfMonth(this.props.day) == 1
-                        ? this.renderMonthName()
-                        : null
-                }
-                {getDayOfMonth(this.props.day)}
+                <span>
+                    {
+                        getDayOfMonth(this.props.day) == 1 && false
+                            ? this.renderMonthName()
+                            : null
+                    }
+                    {getDayOfMonth(this.props.day)}
+                </span>
             </div>
         )
     }

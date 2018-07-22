@@ -28,18 +28,13 @@ export function getPastNDays(n) {
 }
 
 export function getPastNWeeks(n) {
-    var mondays = []
     var thisMonday = getStartOfCurrentWeek()
-    for (var i = 1 - n; i <= 0; i++) {
-        mondays.push(date.addDays(thisMonday, i * 7))
+    var firstMonday = date.addDays(thisMonday, -7 * (n - 1))
+    var days = []
+    for (var i = 0; i < 7 * n; i++) {
+        days.push(date.addDays(firstMonday, i))
     }
-    return mondays.map(monday => {
-        var week = []
-        for (var i = 0; i < 7; i++) {
-            week.push(date.addDays(monday, i))
-        }
-        return week
-    })
+    return days
 }
 
 export function getDayOfMonth(day) {

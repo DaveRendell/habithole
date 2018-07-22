@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Week from './Week';
+import Day from './Day';
 
 import { getPastNWeeks } from '../../helpers/date'
 import Button from '../Button';
@@ -21,17 +21,21 @@ class Calendar extends Component {
     render() {
         return (
             <div>
-                <div className="calendar">
-                    {getPastNWeeks(7).map(week => 
-                        <Week 
-                            key={week[0].getTime()} 
-                            week={week} 
-                            habit={this.props.habit}
-                            habitKey={this.props.habitKey}
-                            editMode={this.state.editMode}
-                        />
-                    )}
-                </div>
+                <div className="calendar-outer-wrapper">
+                    <div className='calendar-wrapper'>
+                        <div className="calendar">
+                            {getPastNWeeks(7).map(day => 
+                                <Day 
+                                    key={day.getTime()} 
+                                    day={day} 
+                                    habit={this.props.habit} 
+                                    habitKey={this.props.habitKey}
+                                    editMode={this.props.editMode}
+                                />
+                            )}
+                        </div>
+                    </div>
+                </div>                                
                 {
                     this.state.editMode
                         ? <span>Click above to edit habit history</span>

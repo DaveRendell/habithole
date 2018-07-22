@@ -22,60 +22,74 @@ $cell-size: 46px;
         }
         margin-bottom: 32px;
     }
-
-    .calendar {
+    .calendar-outer-wrapper {
+        max-width: 420px;
+        max-height: 420px;
         margin: 0 auto;
-        width: 100%;
-        max-width: 410px;
-        .week {
-            display: block;
-            padding: 0 12px;
-            .day {
-                display: inline-block;
-                width: 14.2%;
-                border-radius: 100%;
-                max-width: $cell-size;
-                height: $cell-size;
-                line-height: $cell-size;
-                margin: 4px;
-                font-size: 22px;
-                padding-top: 1px;
-                padding-left: 1px;
-                color: white;
-                font-weight: bold;
-                text-align: center;
-                -webkit-user-select: none;     
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
-                position: relative;
-                background-color: lightgray;
-                
-                &.toggle {
-                    cursor: pointer;
-                }
-
-                &.not-done {
-                    background-color: lightcoral;
-                }
-
-                &.done {
-                    background-color: lightgreen;
-                }
-
-                &.todo-today {
-                    background-color: lightblue;
-                }
-
-                .month-name {
-                    position: absolute;
-                    width: $cell-size;
-                    line-height: 10px;
-                    font-size: 10px;
-                    text-transform: uppercase;
+        .calendar-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%;
+            margin: 0 auto;
+            .calendar {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                display: grid;
+                grid-template-columns: auto auto auto auto auto auto auto;
+                grid-template-rows: auto auto auto auto auto auto auto;
+                grid-gap: 5px;
+    
+                padding-bottom: 8px;
+                .day {
+                    border-radius: 100%;
+                    font-size: 24px;
+    
+                    color: white;
+                    font-weight: bold;
                     text-align: center;
-                    left: 0;
-                    top: 5px;
+                    user-select: none;
+                    background-color: lightgray;
+    
+                    &:before {
+                        display: inline-block;
+                        height: 100%;
+                        content: "";
+                        vertical-align: middle;
+                    }
+    
+                    span {
+                        vertical-align: middle;
+                    }
+                    
+                    &.toggle {
+                        cursor: pointer;
+                    }
+    
+                    &.not-done {
+                        background-color: lightcoral;
+                    }
+    
+                    &.done {
+                        background-color: lightgreen;
+                    }
+    
+                    &.todo-today {
+                        background-color: lightblue;
+                    }
+    
+                    .month-name {
+                        position: absolute;
+                        width: $cell-size;
+                        line-height: 10px;
+                        font-size: 10px;
+                        text-transform: uppercase;
+                        text-align: center;
+                        left: 0;
+                        top: 5px;
+                    }
                 }
             }
         }
