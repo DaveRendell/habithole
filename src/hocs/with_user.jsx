@@ -7,14 +7,18 @@ export default function withUser(WrappedComponent) {
         constructor(props) {
             super(props)
             this.state = {
-                user: null
+                user: null,
+                isLoading: true
             }
         }
         
         componentDidMount() {
             this.unregisterAuthObserver = 
                 auth.onAuthStateChanged(user =>
-                    this.setState({signedIn: !!user, user})    
+                    this.setState({
+                        user,
+                        isLoading: false
+                    })    
                 )
         }
     
@@ -25,6 +29,7 @@ export default function withUser(WrappedComponent) {
         render() {
             return <WrappedComponent
                 user={this.state.user}
+                isLoading={this.state.isLoading}
                 {...this.props}
             />
         }

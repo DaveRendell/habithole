@@ -16,9 +16,11 @@ class UserInfo extends Component {
     }
 
     render() {
-        return this.props.user
-            ? this.renderSignedIn()
-            : this.renderSignedOut()
+        return this.props.isLoading
+            ? null
+            : this.props.user
+                ? this.renderSignedIn()
+                : this.renderSignedOut()
     }
 }
 
