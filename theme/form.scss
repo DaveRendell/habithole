@@ -1,5 +1,8 @@
 .form {
     .form-content {
+        .hidden-submit-input {
+            display: none;
+        }
         .text-input-group, .select-input-group {
             padding: 8px;
             label {

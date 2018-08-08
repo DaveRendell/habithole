@@ -70,7 +70,8 @@ class Form extends Component {
         return isValid
     }
 
-    submitForm() {
+    submitForm(event) {
+        if (event) event.preventDefault()
         const formState = this.getFormState()
         return this.props.action(formState)
     }
@@ -202,7 +203,11 @@ class Form extends Component {
 
     render() {
         return (
-            <div className="form">
+            <form 
+                className="form" 
+                onSubmit={this.submitForm}
+                ref={formRef => this.formRef = formRef}
+            >
                 <div className="form-content">
                     {
                         this.props.fields.map( field => {
@@ -219,6 +224,7 @@ class Form extends Component {
                             }
                         })
                     }
+                    <input type="submit" className="hidden-submit-input"/>
                 </div>
                 <div className="form-footer">
                     <Button 
@@ -227,11 +233,12 @@ class Form extends Component {
                     />
                     <Button 
                         text="Submit"
+                        loadingText="Loading..."
                         action={this.submitForm}
                         disabled={!this.isValidState()}
                     />
                 </div>
-            </div>
+            </form>
         );
     }
 }
