@@ -5,10 +5,16 @@ import Button from '../Button'
 
 import withUser from '../../hocs/with_user'
 import { signOut } from '../../actions/user'
+import SettingsPageLink from './SettingsPageLink'
 
 class UserInfo extends Component {
     renderSignedIn() {
-        return <Button text="Sign Out" action={signOut} />
+        return (
+            <div>
+                <SettingsPageLink />
+                <Button text="Sign Out" action={signOut} />
+            </div>
+        )
     }
 
     renderSignedOut() {

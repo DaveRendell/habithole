@@ -22,5 +22,17 @@
             text-shadow: 1px 1px 1px rgba(78, 78, 78, 0.144);
             text-decoration: none;        
         }
+
+        .settings-icon {
+            color: white;
+            font-size: 24px;
+            line-height: 24px;
+            margin-right: 8px;
+            vertical-align: middle;
+
+            &:hover {
+                color: #ecebeb;
+            }
+        }
     }
 }

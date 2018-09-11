@@ -1,0 +1,5 @@
+@import "mixins/page";
+
+.settings-page {
+    @include page();
+}
