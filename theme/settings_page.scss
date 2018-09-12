@@ -2,4 +2,14 @@
 
 .settings-page {
     @include page();
+
+    a {
+        color: rgb(106, 176, 204);
+        &:hover {
+            color:#adb7e6;
+        }
+
+        cursor: pointer;
+        text-decoration: underline;
+    }
 }

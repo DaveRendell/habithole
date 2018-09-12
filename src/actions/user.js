@@ -11,3 +11,9 @@ export function signIn(email, password) {
 export function signUp(email, password) {
     return auth.createUserWithEmailAndPassword(email, password)
 }
+
+export function updatePassword(oldPassword, newPassword) {
+    var user = auth.currentUser
+    return auth.signInWithEmailAndPassword (user.email, oldPassword).then(
+        () => user.updatePassword(newPassword))
+}
