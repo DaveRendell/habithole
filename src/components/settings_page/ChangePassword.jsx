@@ -45,6 +45,15 @@ export default class ChangePassword extends Component {
                             type: 'text',
                             textType: 'password',
                             required: true
+                        },
+                        {
+                            id: 'newPasswordRepeat',
+                            label: 'New Password (Again)',
+                            type: 'text',
+                            textType: 'password',
+                            validator: (input, {newPassword}) => input === newPassword,
+                            advice: 'Passwords must match',
+                            required: true
                         }
                     ]}
                     action={state => updatePassword(state.oldPassword, state.newPassword).then(this.closeModal)}

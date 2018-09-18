@@ -55,6 +55,15 @@ class AuthenticationButtons extends Component {
                         type: 'text',
                         textType: 'password',
                         required: true
+                    },
+                    {
+                        id: 'password_repeat',
+                        label: 'Password (Again)',
+                        type: 'text',
+                        textType: 'password',
+                        validator: (input, {password}) => input === password,
+                        advice: 'Passwords must match',
+                        required: true
                     }
                 ]
             case SIGN_IN: 

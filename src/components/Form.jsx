@@ -63,9 +63,10 @@ class Form extends Component {
         var isValid = true;
         this.props.fields.forEach(field =>  {
             if (field.validator 
-                && !field.validator(this.getValue(field.id))) {
-                    isValid = false;
-            }
+                && !field.validator(
+                    this.getValue(field.id), 
+                    this.getFormState())
+            ) { isValid = false; }
         })
         return isValid
     }
@@ -82,7 +83,7 @@ class Form extends Component {
     }) {
         const isInvalid = this.isTouched(id) 
             && validator 
-            && !validator(this.getValue(id))
+            && !validator(this.getValue(id), this.getFormState())
 
         const errorClass = isInvalid || (this.isTouched(id) && required && this.getValue(id) === '')
             ? 'error'
