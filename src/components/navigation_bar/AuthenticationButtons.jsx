@@ -5,6 +5,7 @@ import Button from '../Button'
 import Form from '../Form'
 
 import { signIn, signUp } from '../../actions/user'
+import FormModal from '../FormModal';
 
 const SIGN_IN = 'sign_in'
 const SIGN_UP = 'sign_up'
@@ -35,57 +36,49 @@ class AuthenticationButtons extends Component {
         }
     }
 
-    getModalContent() {
+    getFormFields() {
         switch (this.state.modalType) {
             case SIGN_UP: 
-                return <Form
-                    fields={[
-                        {
-                            id: 'email',
-                            label: 'Email',
-                            type: 'text',
-                            textType: 'email',
-                            validator: input => input.search('@') > -1,
-                            advice: 'Please enter a valid email address',
-                            required: true
-                        },
-                        {
-                            id: 'password',
-                            label: 'Password',
-                            type: 'text',
-                            textType: 'password',
-                            required: true
-                        }
-                    ]}
-                    action={this.signUpAction}
-                    cancel={this.closeModal} 
-                />
+                return [
+                    {
+                        id: 'email',
+                        label: 'Email',
+                        type: 'text',
+                        textType: 'email',
+                        validator: input => input.search('@') > -1,
+                        advice: 'Please enter a valid email address',
+                        required: true
+                    },
+                    {
+                        id: 'password',
+                        label: 'Password',
+                        type: 'text',
+                        textType: 'password',
+                        required: true
+                    }
+                ]
             case SIGN_IN: 
-                return <Form
-                    fields={[
-                        {
-                            id: 'email',
-                            label: 'Email',
-                            type: 'text',
-                            textType: 'email',
-                            validator: input => input.search('@') > -1,
-                            advice: 'Please enter a valid email address',
-                            required: true
-                        },
-                        {
-                            id: 'password',
-                            label: 'Password',
-                            type: 'text',
-                            textType: 'password',
-                            required: true
-                        }
-                    ]}
-                    action={this.signInAction}
-                    cancel={this.closeModal} 
-                />
+                return [
+                    {
+                        id: 'email',
+                        label: 'Email',
+                        type: 'text',
+                        textType: 'email',
+                        validator: input => input.search('@') > -1,
+                        advice: 'Please enter a valid email address',
+                        required: true
+                    },
+                    {
+                        id: 'password',
+                        label: 'Password',
+                        type: 'text',
+                        textType: 'password',
+                        required: true
+                    }
+                ]
             default: 
-                return ''
-        }
+                return []
+        } 
     }
 
     signUpAction({email, password}) {
@@ -94,6 +87,15 @@ class AuthenticationButtons extends Component {
 
     signInAction({email, password}) {
         signIn(email, password).then(this.closeModal)
+    }    
+    
+    getAction() {
+        switch (this.state.modalType) {
+            case SIGN_UP:
+                return this.signUpAction
+            case SIGN_IN:
+                return this.signInAction
+        }
     }
 
     closeModal() {
@@ -121,12 +123,13 @@ class AuthenticationButtons extends Component {
             <div className="form-inline">
                 <Button style='primary' text='Sign In' action={this.openSignInModal} />
                 <Button style='success' text='Sign Up' action={this.openSignUpModal} />
-                <Modal
+                <FormModal
                     isOpen={this.state.modalOpen}
-                    contentLabel={this.getModalLabel()}
-                >
-                    {this.getModalContent()}
-                </Modal>
+                    closeModal={this.closeModal}
+                    fields={this.getFormFields()}
+                    action={this.getAction()}
+                    label={this.getModalLabel()}
+                />
             </div>
         )
     }

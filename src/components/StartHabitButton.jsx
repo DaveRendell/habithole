@@ -28,12 +28,10 @@ class StartHabitButton extends Component {
         return (
             <div>
                 <Button text='Start New Habit' action={this.openModal} />
-                <Modal
+                <StartHabitForm 
                     isOpen={this.state.isOpen}
-                    contentLabel="Start Habit"
-                >
-                    <StartHabitForm cancel={this.closeModal}/>
-                </Modal>
+                    cancel={this.closeModal}
+                />
             </div>
         )
     }

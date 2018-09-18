@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import Modal from 'react-modal'
 
-import Form from '../Form';
 import {updatePassword} from '../../actions/user'
+import FormModal from '../FormModal';
 
-Modal.setAppElement('#app-container')
+
 
 export default class ChangePassword extends Component {
     constructor(props) {
@@ -29,11 +28,9 @@ export default class ChangePassword extends Component {
         return (
             <div>
                 <a onClick={this.openModal}>Change Password</a>
-                <Modal
+                <FormModal
                     isOpen={this.state.modalOpen}
-                    contentLabel='Change Password'
-                >
-                    <Form
+                    closeModal={this.closeModal}
                     fields={[
                         {
                             id: 'oldPassword',
@@ -51,9 +48,8 @@ export default class ChangePassword extends Component {
                         }
                     ]}
                     action={state => updatePassword(state.oldPassword, state.newPassword).then(this.closeModal)}
-                    cancel={this.closeModal}
+                    label='Change Password'
                 />
-                </Modal>
             </div>
         )
     }

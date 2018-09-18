@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { createHabit } from '../actions/habits'
 
-import Form from './Form'
+import FormModal from './FormModal'
 
 const HowOften = {
     EVERY_DAY: 'how_often_every_day',
@@ -59,7 +59,9 @@ class StartHabitForm extends Component {
 
     render() {
         return (
-            <Form 
+            <FormModal
+                isOpen={this.props.isOpen}
+                closeModal={this.props.cancel}
                 fields={[
                     {
                         id: 'description',
@@ -97,7 +99,7 @@ class StartHabitForm extends Component {
                     }
                 ]}
                 action={this.submitForm.bind(this)}
-                cancel={this.props.cancel}
+                label='Start New Habit'
             />
         );
     }
