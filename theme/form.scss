@@ -20,7 +20,7 @@
                 margin-bottom: 4px;
 
                 &.error {
-                    border-color: rgb(235, 103, 103);
+                    border-color: #eb6767;
                     background-color: #f1e4e4;
                 }
             }
@@ -38,7 +38,7 @@
                 background-color: white;
 
                 &.error {
-                    border-color: rgb(235, 103, 103);
+                    border-color: #eb6767;
                     background-color: #f1e4e4;
                 }
             }
@@ -84,6 +84,16 @@
                 }
             }
         }
+    }
+
+    .form-error-messages {
+        border: 1px solid #eb6767;
+        color: #eb6767;
+        border-radius: 4px;
+        background-color: #f1e4e4;
+        padding: 4px 8px;
+        margin: 0 8px 8px 8px;
+        
     }
 
     .form-footer {

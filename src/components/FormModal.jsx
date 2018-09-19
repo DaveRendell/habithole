@@ -11,7 +11,8 @@ export default class FormModal extends Component {
             closeModal,
             fields,
             action,
-            label
+            label,
+            errorHandlers
         } = this.props
 
         return (
@@ -24,6 +25,7 @@ export default class FormModal extends Component {
                     fields={fields}
                     action={action}
                     cancel={closeModal}
+                    errorHandlers={errorHandlers}
                 />
                 </Modal>
             </div>

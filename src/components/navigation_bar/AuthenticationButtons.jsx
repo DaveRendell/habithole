@@ -91,11 +91,11 @@ class AuthenticationButtons extends Component {
     }
 
     signUpAction({email, password}) {
-        signUp(email, password).then(this.closeModal)
+        return signUp(email, password).then(this.closeModal)
     }
 
     signInAction({email, password}) {
-        signIn(email, password).then(this.closeModal)
+        return signIn(email, password).then(this.closeModal)
     }    
     
     getAction() {
@@ -104,6 +104,37 @@ class AuthenticationButtons extends Component {
                 return this.signUpAction
             case SIGN_IN:
                 return this.signInAction
+        }
+    }
+
+    getErrorHandlers() {
+        switch (this.state.modalType) {
+            case SIGN_UP:
+                return [
+                    error => {
+                        switch(error.code) {
+                            case 'auth/weak-password':
+                                return error.message
+                            case 'auth/email-already-in-use':
+                                return 'There is already an account with this address'
+                            default: 
+                                return null
+                        }
+                    }
+                ]
+            case SIGN_IN:
+                return [
+                    error => {
+                        switch(error.code) {
+                            case 'auth/wrong-password':
+                                return 'Incorrect Password'
+                            case 'auth/user-not-found':
+                                return 'No user with that email address found'
+                            default: 
+                                return null
+                        }
+                    }
+                ]
         }
     }
 
@@ -138,6 +169,7 @@ class AuthenticationButtons extends Component {
                     fields={this.getFormFields()}
                     action={this.getAction()}
                     label={this.getModalLabel()}
+                    errorHandlers={this.getErrorHandlers()}
                 />
             </div>
         )

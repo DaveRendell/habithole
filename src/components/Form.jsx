@@ -9,7 +9,9 @@ class Form extends Component {
     constructor(props) {
         super(props)
 
-        this.state = {}
+        this.state = {
+            errorMessages: []
+        }
         this.props.fields.map( field => {
             if (field.type === 'checkbox') {
                 this.state[field.id] = {
@@ -27,6 +29,7 @@ class Form extends Component {
         })
 
         this.submitForm = this.submitForm.bind(this)
+        this.handleError = this.handleError.bind(this)
     }
 
     getValue(id) {
@@ -75,6 +78,36 @@ class Form extends Component {
         if (event) event.preventDefault()
         const formState = this.getFormState()
         return this.props.action(formState)
+            .catch(this.handleError)
+        
+    }
+
+    handleError(error) {
+        var errorMessages = []
+        if (this.props.errorHandlers) {
+            var nextId = 0
+            this.props.errorHandlers.forEach(errorHandler => {
+                    const errorMessage = errorHandler(error)
+                    if (errorMessage) {
+                        errorMessages.push({
+                            id: nextId,
+                            text: errorMessage
+                        })
+                        nextId += 1
+                    }
+                }
+            )
+        }
+
+        if (errorMessages.length == 0) {
+            this.setState({errorMessages: [{
+                id: 0,
+                text: 'An unexpected error has occured, sorry :('}
+            ]})
+            console.error(error)
+        } else {
+            this.setState({errorMessages})
+        }
     }
 
     renderTextInput({
@@ -227,6 +260,18 @@ class Form extends Component {
                     }
                     <input type="submit" className="hidden-submit-input"/>
                 </div>
+                {
+                    this.state.errorMessages.length > 0 
+                        ? <div className="form-error-messages">
+                            {
+                                this.state.errorMessages.map(message => (
+                                    <span key={message.id} className="error-message">{message.text}</span>
+                                ))
+                            }
+                        </div> 
+                        : null
+                }
+                
                 <div className="form-footer">
                     <Button 
                         text="Cancel"
