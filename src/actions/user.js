@@ -17,3 +17,9 @@ export function updatePassword(oldPassword, newPassword) {
     return auth.signInWithEmailAndPassword (user.email, oldPassword).then(
         () => user.updatePassword(newPassword))
 }
+
+export function deleteAccount(password) {
+    var user = auth.currentUser
+    return auth.signInWithEmailAndPassword (user.email, password).then(
+        () => user.delete())
+}

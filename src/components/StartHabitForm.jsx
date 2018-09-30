@@ -13,11 +13,10 @@ const HowOften = {
 
 class StartHabitForm extends Component {
     submitForm(state) {
-        createHabit(
+        return createHabit(
             state.description,
             this.getActiveDays(state)    
-        )
-        this.props.cancel()
+        ).then(() => this.props.cancel())
     }
 
     getActiveDays(state) {

@@ -22,7 +22,7 @@ export function createHabit(
                 start_date: todaysDateAsString(),
                 position: snapshot.numChildren()
             })
-        )    
+        )
 }
 
 function getNextPosition() {
