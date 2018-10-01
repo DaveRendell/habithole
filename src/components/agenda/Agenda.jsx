@@ -24,6 +24,7 @@ class Agenda extends Component {
         this.onDragOver = this.onDragOver.bind(this)
         this.onDrop = this.onDrop.bind(this)
         this.onDragStart = this.onDragStart.bind(this)
+        this.renderAgendaRow = this.renderAgendaRow.bind(this)
     }
 
     onDragOver(event, targetKey) {
@@ -91,6 +92,21 @@ class Agenda extends Component {
         return _.keys(this.props.habits).sort((a, b) => this.props.habits[a].position > this.props.habits[b].position)
     }
 
+    renderAgendaRow(key) {
+        const habit = this.props.habits[key]
+        if (habit['habit_type'] == 'daily') {
+            return <AgendaItem 
+                habit={this.props.habits[key]} 
+                habitKey={key} 
+                key={key}
+            />
+        }
+        if (habit['habit_type'] == 'weekly') {
+            return <div className="agenda-content-row">{habit.description}</div>
+        }
+        
+    }
+
     render() {
         return (
             <div className="agenda">
@@ -130,13 +146,7 @@ class Agenda extends Component {
                             }
                         </div>
                         {
-                            this.sortedHabits().map(key =>
-                                <AgendaItem 
-                                    habit={this.props.habits[key]} 
-                                    habitKey={key} 
-                                    key={key}
-                                />
-                            )
+                            this.sortedHabits().map(this.renderAgendaRow)
                         }
                     </div>
                 </div>

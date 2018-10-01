@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 
-import { createHabit } from '../actions/habits'
+import { createDailyHabit, createWeeklyHabit } from '../actions/habits'
 
 import FormModal from './FormModal'
+
+const HabitType = {
+    DAILY: 'daily',
+    WEEKLY: 'weekly'
+}
 
 const HowOften = {
     EVERY_DAY: 'how_often_every_day',
@@ -13,10 +18,19 @@ const HowOften = {
 
 class StartHabitForm extends Component {
     submitForm(state) {
-        return createHabit(
-            state.description,
-            this.getActiveDays(state)    
-        ).then(() => this.props.cancel())
+        switch(state.habitType) {
+            case HabitType.DAILY:
+                return createDailyHabit(
+                    state.description,
+                    this.getActiveDays(state)    
+                ).then(() => this.props.cancel())
+            case HabitType.WEEKLY:
+                return createWeeklyHabit(
+                    state.description,
+                    state['number-per-week']
+                ).then(() => this.props.cancel())
+        }
+        
     }
 
     getActiveDays(state) {
@@ -69,17 +83,30 @@ class StartHabitForm extends Component {
                         required: true
                     },
                     {
+                        id: 'habitType',
+                        type: 'select',
+                        label: 'Track this habit Daily or Weekly?',
+                        required: true,
+                        options: [
+                            {id: HabitType.DAILY, label: 'Daily'},
+                            {id: HabitType.WEEKLY, label: 'Weekly'}
+                        ],
+                        defaultValue: HabitType.DAILY
+                    },
+                    {
                         id: 'how-often',
                         type: 'select',
                         label: 'Active days',
-                        required: true,
                         options: [
                             {id: HowOften.EVERY_DAY, label: 'Every day'},
                             {id: HowOften.WEEKDAYS, label: 'Every weekday'},
                             {id: HowOften.WEEKENDS, label: 'Every weekend'},
                             {id: HowOften.OTHER, label: 'Other...'},
                         ],
-                        defaultValue: HowOften.EVERY_DAY
+                        defaultValue: HowOften.EVERY_DAY,
+                        validator: (input, {habitType}) => habitType == HabitType.WEEKLY || input,
+                        displayIf: state => 
+                            state['habitType'] === HabitType.DAILY
                     },
                     {
                         id: 'custom-days',
@@ -94,7 +121,18 @@ class StartHabitForm extends Component {
                             {id: 'Saturday', label: 'Saturday'},
                             {id: 'Sunday', label: 'Sunday'},
                         ],
-                        displayIf: state => state['how-often'] === HowOften.OTHER
+                        displayIf: state => 
+                            state['how-often'] === HowOften.OTHER 
+                            && state['habitType'] === HabitType.DAILY
+                    },
+                    {
+                        id: 'number-per-week',
+                        label: 'How many times a week?',
+                        type: 'text',
+                        textType: 'number',
+                        displayIf: ({habitType}) => habitType === HabitType.WEEKLY,
+                        validator: (input, {habitType}) => habitType === HabitType.DAILY || input,
+                        defaultValue: 1
                     }
                 ]}
                 action={this.submitForm.bind(this)}

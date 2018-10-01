@@ -9,7 +9,7 @@ function getDatabaseReference() {
     return database.ref(`habits/${uid}`)
 }
 
-export function createHabit(
+export function createDailyHabit(
     description,
     activeDays
 ) {
@@ -18,7 +18,25 @@ export function createHabit(
         .then(snapshot => 
             getDatabaseReference().push({
                 description: description,
+                habit_type: 'daily',
                 active_days: activeDays,
+                start_date: todaysDateAsString(),
+                position: snapshot.numChildren()
+            })
+        )
+}
+
+export function createWeeklyHabit(
+    description,
+    numberPerWeek
+) {
+    return getDatabaseReference()
+        .once('value')
+        .then(snapshot => 
+            getDatabaseReference().push({
+                description: description,
+                habit_type: 'weekly',
+                number_per_week: numberPerWeek,
                 start_date: todaysDateAsString(),
                 position: snapshot.numChildren()
             })
