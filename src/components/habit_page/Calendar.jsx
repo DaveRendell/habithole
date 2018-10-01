@@ -30,7 +30,7 @@ class Calendar extends Component {
                                     day={day} 
                                     habit={this.props.habit} 
                                     habitKey={this.props.habitKey}
-                                    editMode={this.props.editMode}
+                                    editMode={this.state.editMode}
                                 />
                             )}
                         </div>
