@@ -112,6 +112,32 @@ export function unmarkAsDone(habitKey, day = new Date()) {
 
 }
 
+export function increaseWeeklyHabit(habitKey, weekCommencing) {
+    const weekRef = getDatabaseReference()
+        .child(habitKey)
+        .child('weeks')
+        .child(formatAsString(weekCommencing))
+
+    weekRef.once('value').then(snapshot => {
+        const currentValue = snapshot.val()
+        weekRef.set(currentValue + 1) 
+    })
+}
+
+export function decreaseWeeklyHabit(habitKey, weekCommencing) {
+    const weekRef = getDatabaseReference()
+        .child(habitKey)
+        .child('weeks')
+        .child(formatAsString(weekCommencing))
+
+    weekRef.once('value').then(snapshot => {
+        const currentValue = snapshot.val()
+        if (currentValue > 0) {
+            weekRef.set(currentValue - 1) 
+        }
+    })
+}
+
 export function editDescription(habitKey, newDescription) {
     return getDatabaseReference()
         .child(habitKey)

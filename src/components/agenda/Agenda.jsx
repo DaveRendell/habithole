@@ -3,13 +3,14 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 import withHabits from '../../hocs/with_habits'
-import AgendaItem from './AgendaItem'
+import DailyAgendaItem from './DailyAgendaItem'
 
 import { getPastNDays, shorthandFormat } from '../../helpers/date'
 import { moveToPosition } from '../../actions/habits'
 import StartHabitButton from '../StartHabitButton'
 
 import '../../../theme/agenda.scss'
+import WeeklyAgendaItem from './WeeklyAgendaItem';
 
 class Agenda extends Component {
     constructor(props) {
@@ -95,14 +96,18 @@ class Agenda extends Component {
     renderAgendaRow(key) {
         const habit = this.props.habits[key]
         if (habit['habit_type'] == 'daily') {
-            return <AgendaItem 
+            return <DailyAgendaItem 
                 habit={this.props.habits[key]} 
                 habitKey={key} 
                 key={key}
             />
         }
         if (habit['habit_type'] == 'weekly') {
-            return <div className="agenda-content-row">{habit.description}</div>
+            return <WeeklyAgendaItem
+                habit={this.props.habits[key]}
+                habitKey={key} 
+                key={key}
+            />
         }
         
     }

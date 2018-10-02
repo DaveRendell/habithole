@@ -53,7 +53,7 @@ export function dayOfWeek(day) {
     return date.format(day, 'dddd')
 }
 
-function getStartOfCurrentWeek() {
+export function getStartOfCurrentWeek() {
     const today = new Date()
     const dayOfWeek = date.format(today, 'dddd')
     const daysAsNumbers = {

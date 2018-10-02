@@ -4,7 +4,7 @@ import { getPastNDays } from '../../helpers/date'
 import { getHabitStateOnDay } from '../../helpers/habits'
 import HabitDayMarker from './HabitDayMarker'
 
-class AgendaItem extends Component {
+class DailyAgendaItem extends Component {
     render() {
         return (
             <div className="agenda-content-row">
@@ -30,4 +30,4 @@ class AgendaItem extends Component {
     }
 }
 
-export default AgendaItem
+export default DailyAgendaItem

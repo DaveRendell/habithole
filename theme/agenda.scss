@@ -110,6 +110,33 @@ $cell-width: 80px;
                     text-align: center;
                     font-weight: bold;
                 }
+
+                &.weekly {
+                    direction: ltr;
+                    height: $cell-height;
+                    line-height: $cell-height;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-evenly;
+
+                    .weekly-toggle {
+                        //flex: 0 0 $cell-width;
+                        height: $cell-height;
+                        line-height: $cell-height;
+                        text-align: center;
+
+                        &.fa.fa-check {
+                            color: lightgreen;
+                            font-size: 24px;
+                        }
+
+                        &.fa.fa-circle {
+                            color: lightblue;
+                            font-size: 18px;
+                        }
+                    }
+                    
+                }
             }
         }
     }

@@ -34,3 +34,10 @@ export function getHabitStateOnDay(habit, day) {
 
     return HabitState.NOT_DONE
 }
+
+export function getHabitStateForWeekCommencing(habit, startOfWeek) {
+    if (!habit.weeks || !habit.weeks[formatAsString(startOfWeek)]) {
+        return 0
+    }
+    return habit.weeks[formatAsString(startOfWeek)]
+}
